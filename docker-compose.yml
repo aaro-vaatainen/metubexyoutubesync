@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  playlist_sync:
+    build: .
+    container_name: playlist_sync
+    environment:
+      - PLAYLIST_FILE=/data/playlists.json
+      - DESTINATION_URL=https://example.url/add
+      - CHECK_INTERVAL=2  # 2 sekuntia
+    volumes:
+      - ./playlists.json:/data/playlists.json
+    restart: always
